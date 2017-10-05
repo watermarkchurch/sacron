@@ -9,7 +9,7 @@
 ### END INIT INFO
 
 SCRIPT='/bin/sacron'
-RUNAS=sacron
+RUNAS=root
 
 PIDFILE=/var/run/sacron.pid
 LOGFILE=/var/log/sacron.log

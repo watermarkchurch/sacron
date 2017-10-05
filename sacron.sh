@@ -24,14 +24,14 @@ LAT=${ARR[0]}
 LON=${ARR[1]}
 
 check_sabbath() {
-  if [[ "$TODAY" == "Thu" ]]; then
+  if [[ "$TODAY" == "Sat" ]]; then
     log ${scriptures[$RANDOM % ${#scriptures[@]} ]}
 
     service cron stop
 
     # wait for sundown on Sunday
     sleep 30
-    sunwait-20041208/sunwait -v -p sun down ${LAT}N ${LON}E
+    sunwait -v -p sun down ${LAT}N ${LON}E
 
     log "Sabbath is over, time to start cron again"
     service cron start
@@ -43,7 +43,7 @@ do
   TODAY=$(date '+%a')
   log "Today is $TODAY"
 
-  # sunwait-20041208/sunwait -v -p sun down ${LAT}N ${LON}E
+  sunwait -v -p sun down ${LAT}N ${LON}E
 
   check_sabbath
 done
