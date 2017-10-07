@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/bash
 ### BEGIN INIT INFO
 # Provides:          sacron
 # Required-Start:    $local_fs $network $named $time $syslog
@@ -8,7 +8,9 @@
 # Description:       Provides
 ### END INIT INFO
 
-SCRIPT='/bin/sacron'
+BIN_DIR=/bin
+source /etc/sacron.conf || echo "no config file /etc/sacron.conf - using defaults"
+SCRIPT="$BIN_DIR/sacron"
 RUNAS=root
 
 PIDFILE=/var/run/sacron.pid
